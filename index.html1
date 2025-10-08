@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login Example</title>
+</head>
+<body>
+
+    <!-- Facebook Login Button -->
+    <div id="fb-root"></div>
+
+    <script>
+        // Load Facebook SDK asynchronously
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : 'your-app-id',  // Replace with your Facebook App ID
+                cookie     : true,  // Enable cookies to allow the server to access the session
+                xfbml      : true,  // Parse social plugins on this page
+                version    : 'v15.0'  // Use the latest version of the Graph API
+            });
+
+            // Check the login status of the user
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    console.log('Logged in');
+                    // User is logged in, you can fetch user info here
+                } else {
+                    console.log('User not logged in');
+                }
+            });
+        };
+
+        // Asynchronously
